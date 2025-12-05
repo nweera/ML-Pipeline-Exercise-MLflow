@@ -1,0 +1,19 @@
+stages:
+  prepare:
+    cmd: python prepare.py --config config.yaml
+    deps:
+      - prepare.py
+      - config.yaml
+      - data/dataset.csv
+    outs:
+      - data/dataset_preprocessed.csv
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - config.yaml
+      - data/dataset_preprocessed.csv
+    # train.py produces one metrics file per model: metrics_{model_name}.txt
+    metrics:
+      - "metrics_*.txt"

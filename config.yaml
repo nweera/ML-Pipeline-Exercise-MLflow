@@ -1,0 +1,23 @@
+data:
+  path: "data/dataset_preprocessed.csv"
+  target_column: "target"
+  test_size: 0.2
+  random_state: 42
+  shuffle: true
+
+models:
+  logistic_regression:
+    type: "logistic_regression"
+    max_iter: 200
+
+  decision_tree:
+    type: "decision_tree"
+    max_depth: 5
+
+  random_forest:
+    type: "random_forest"
+    n_estimators: 50
+
+training:
+  save_metrics: true
+  metrics_output_pattern: "metrics_{model}.txt"
